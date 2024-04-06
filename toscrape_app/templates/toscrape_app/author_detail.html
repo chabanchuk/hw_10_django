@@ -1,0 +1,23 @@
+<!-- templates/toscrape_app/author_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ author.fullname }}</title>
+</head>
+<body>
+    <h1>{{ author.fullname }}</h1>
+    <p>Born: {{ author.born_date }}</p>
+    <p>Born Location: {{ author.born_location }}</p>
+    <p>Description: {{ author.description }}</p>
+    <h2>Quotes by {{ author.fullname }}:</h2>
+    <ul>
+        {% for quote in author.quote_set.all %}
+            <li>{{ quote.quote }}</li>
+        {% empty %}
+            <li>No quotes.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'toscrape_app:main' %}">На головну</a>
+</body>
+</html>
